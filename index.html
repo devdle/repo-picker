@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Repository Finder</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-card">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="logo-icon"><i class="fab fa-github"></i></div>
+        <h1>GitHub Repository Finder</h1>
+      </header>
+
+      <!-- Language Selector -->
+      <div class="selector-wrapper">
+        <select id="languageSelect">
+          <option value="" disabled selected>Select a Language</option>
+          <option value="javascript">JavaScript</option>
+          <option value="typescript">TypeScript</option>
+          <option value="python">Python</option>
+          <option value="rust">Rust</option>
+          <option value="go">Go</option>
+          <option value="java">Java</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+        </select>
+      </div>
+
+      <!-- State 1: Empty -->
+      <section id="emptyState" class="state-box empty-box">
+        <p>Please select a language</p>
+      </section>
+
+      <!-- State 2: Loading -->
+      <section id="loadingState" class="state-box loading-box hidden">
+        <p>Loading, please wait..</p>
+      </section>
+
+      <!-- State 3: Error -->
+      <section id="errorState" class="state-box error-box hidden">
+        <p id="errorText">Error fetching repositories</p>
+        <button id="retryBtn" class="btn btn-danger">Click to retry</button>
+      </section>
+
+      <!-- State 4: Success / Repo Card -->
+      <section id="repoState" class="repo-card hidden">
+        <div class="repo-content">
+          <div class="repo-title-row">
+            <a id="repoLink" href="#" target="_blank" rel="noopener noreferrer">
+              <h2 id="repoName">repository-name</h2>
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+          <p id="repoDescription" class="repo-desc">
+            Repository description goes here.
+          </p>
+
+          <div class="repo-meta">
+            <span class="meta-item language-tag">
+              <span class="lang-dot"></span>
+              <span id="repoLanguage">JavaScript</span>
+            </span>
+            <span class="meta-item">
+              <i class="far fa-star"></i>
+              <span id="repoStars">0</span>
+            </span>
+            <span class="meta-item">
+              <i class="fas fa-code-fork"></i>
+              <span id="repoForks">0</span>
+            </span>
+            <span class="meta-item">
+              <i class="far fa-circle-dot"></i>
+              <span id="repoIssues">0</span>
+            </span>
+          </div>
+        </div>
+
+        <button id="refreshBtn" class="btn btn-dark">Refresh</button>
+      </section>
+    </main>
+
+    <script defer src="script.js"></script>
+  </body>
+</html>
